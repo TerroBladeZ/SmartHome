@@ -1,0 +1,156 @@
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: SmartHome
+  latitude: !secret home_latitude
+  longitude: !secret home_longitude
+  elevation: !secret home_elevation
+  temperature_unit: F
+  unit_system: imperial
+  time_zone: America/New_York
+  customize: !include customize.yaml
+  packages: !include_dir_named packages
+  #auth_providers:
+   #- type: homeassistant
+   # Uncomment next line if you want to enable legacy API password support
+   #- type: legacy_api_password
+# Enable the auth component
+auth:
+# Enables the frontend
+
+frontend:
+  javascript_version: latest
+  themes: !include_dir_merge_named themes
+  extra_html_url:
+    - /local/custom_ui/state-card-floorplan.html
+
+# Enables configuration UI
+config:
+python_script:
+http:
+    base_url: !secret http_base_url
+    api_password: !secret http_password
+    ssl_certificate: !secret ssl_certificate
+    ssl_key: !secret ssl_key
+    ip_ban_enabled: True
+    login_attempts_threshold: 3
+
+#Fully Kiosk Setup ##
+panel_custom:
+  - name: floorplan
+    sidebar_title: Floor Plan
+    sidebar_icon: mdi:security-home
+    url_path: floorplan
+    config:
+      hide_app_toolbar:
+      config: /local/custom_ui/floorplan/floorplan.yaml
+
+  - name: alarm
+    sidebar_title: Alarm
+    sidebar_icon: mdi:security-home
+    config:
+      alarmid: alarm_control_panel.house ## USE THE SAME ID AS USED IN YOUR ALARM.YAML
+
+  - name: clock
+    sidebar_title: Alarm Clock
+    sidebar_icon: mdi:alarm
+    url_path: clock
+    config:
+      hide_app_toolbar:
+      config: /local/custom_ui/floorplan/floorclock.yaml
+
+panel_iframe:
+  configurator:
+    title: Configurator
+    icon: mdi:wrench
+    url: !secret configurator_url
+
+  sonweb:
+    title: SonWEB
+    icon: mdi:lightbulb-on
+    url: !secret sonweb_url
+
+  influxdb:
+    title: InfluxDB
+    icon: mdi:chart-areaspline
+    url: !secret influxdb_url
+
+  grafana:
+    title: Grafana
+    icon: mdi:chart-timeline
+    url: !secret grafana_url
+
+influxdb:
+  host: a0d7b954-influxdb
+  port: 8086
+  database: homeassistant
+  username: !secret influxdb_user
+  password: !secret influxdb_pass
+  max_retries: 3
+  default_measurement: state
+
+updater:
+  reporting: False
+
+# Discover some devices automatically
+discovery:
+  ignore:
+    - songpal
+    #- google_cast
+
+
+conversation:
+history:
+#mqtt Broker Setup
+mqtt:
+  broker: core-mosquitto
+  username: !secret mqtt_username
+  password: !secret mqtt_password
+  discovery: true
+  discovery_prefix: smartthings
+
+notify:
+  - name: html
+    platform: html5
+    gcm_api_key: !secret gcm_api_key
+    gcm_sender_id: !secret gcm_sender_id
+
+# View all events in a logbook
+logbook:
+map:
+sun:
+
+weather:
+  - platform: yweather
+# Text to speech
+tts:
+  - platform: google
+
+media_player:
+  - platform: floorplan_speaker
+    name: Entry Kiosk
+
+
+binary_sensor:
+  - platform: mqtt
+    state_topic: dummy/floorplan/sensor
+    name: Floorplan
+  - platform: mqtt
+    state_topic: floorplan/kiosk/entry
+    name: Entry Kiosk
+    retain: true
+
+
+recorder:
+  purge_keep_days: 10
+  exclude:
+    entities:
+      - sun.sun # Don't record sun data
+      - sensor.last_boot # Comes from 'systemmonitor' sensor platform
+      - sensor.date
+      - sensor.time
+# Cloud
+cloud:
+group: !include_dir_merge_named group
+automation: !include automations.yaml
+automation old: !include automations_old.yaml
+alarm_control_panel: !include alarm.yaml

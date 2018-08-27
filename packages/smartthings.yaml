@@ -1,0 +1,263 @@
+  ####################################
+  ###        SmartThings bridge
+  ####################################
+
+group:
+  SmartSwitch:
+    name: Smart Switch
+    entities:
+      - switch.kitchen_light
+      - switch.dining_room_sconces
+      - switch.dining_room_chandelier
+      - switch.basement_light
+      - switch.basement_stairs_spot_lights
+      - switch.dads_bedroom
+      - switch.master_bedroom
+      - switch.living_room_main_lights
+      - switch.living_room_spot_lights
+      - switch.mataji_room
+      - switch.stairs_main_lights
+      - switch.upstairs_hallway_main_lights
+      - switch.front_porch_sconces
+      - switch.laundry_room_main_lights
+      - switch.foyer_chandelier
+      - switch.garage_highbay_light
+  landscapelight:
+    name: Backyard Lights
+    entities:
+      - switch.switch_1
+      - switch.switch_2
+
+switch:
+    ####################################
+    ### Garage lights
+    ####################################
+  - platform: mqtt
+    name: "Garage HighBay Light"
+    command_topic: "cmnd/garagelight/POWER"
+    state_topic: "stat/garagelight/POWER"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    retain: true
+
+
+  ####################################
+  ### Backyard lights
+  ####################################
+  - platform: mqtt
+    name: "Switch 1"
+    state_topic: "stat/irrigation/POWER8"
+    command_topic: "cmnd/irrigation/power8"
+    availability_topic: "tele/irrigation/LWT"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    retain: true
+
+  - platform: mqtt
+    name: "Switch 2"
+    state_topic: "stat/irrigation/POWER7"
+    command_topic: "cmnd/irrigation/power7"
+    availability_topic: "tele/irrigation/LWT"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    retain: true
+
+####################################
+###        SmartThings Switch
+####################################
+  #SmartThings Bridge Switch
+  #smartthings/Contacts/notify
+  #smartthings/System/notify
+light:
+  - platform: mqtt
+    name: "Kitchen Light"
+    state_topic: "smartthings/Kitchen Light/switch/state"
+    command_topic: "smartthings/Kitchen Light/switch/cmd"
+    brightness_command_topic: "smartthings/Kitchen Light/level/cmd"
+    brightness_state_topic: "smartthings/Kitchen Light/level/state"
+    payload_off: "off"
+    payload_on: "on"
+    #optimistic: false
+    retain: false
+
+  - platform: mqtt
+    name: "Front Porch Sconces"
+    state_topic: "smartthings/Front Porch Sconces/switch/state"
+    command_topic: "smartthings/Front Porch Sconces/switch/cmd"
+    brightness_command_topic: "smartthings/Front Porch Sconces/level/cmd"
+    brightness_state_topic: "smartthings/Front Porch Sconces/level/state"
+    payload_off: "off"
+    payload_on: "on"
+    #optimistic: false
+    retain: false
+
+  - platform: mqtt
+    name: "Laundry Room Main Lights"
+    state_topic: "smartthings/Laundry Room Main Lights/switch/state"
+    command_topic: "smartthings/Laundry Room Main Lights/switch/cmd"
+    brightness_command_topic: "smartthings/Laundry Room Main Lights/level/cmd"
+    brightness_state_topic: "smartthings/Laundry Room Main Lights/level/state"
+    payload_off: "off"
+    payload_on: "on"
+    #optimistic: false
+    retain: false
+
+  - platform: mqtt
+    name: "Foyer Chandelier"
+    state_topic: "smartthings/Foyer Chandelier/switch/state"
+    command_topic: "smartthings/Foyer Chandelier/switch/cmd"
+    brightness_command_topic: "smartthings/Foyer Chandelier/level/cmd"
+    brightness_state_topic: "smartthings/Foyer Chandelier/level/state"
+    payload_off: "off"
+    payload_on: "on"
+    #optimistic: false
+    retain: false
+
+  - platform: mqtt
+    name: "Dining Room Sconces"
+    state_topic: "smartthings/Dining Room Sconces/switch/state"
+    command_topic: "smartthings/Dining Room Sconces/switch/cmd"
+    brightness_command_topic: "smartthings/Dining Room Sconces/level/cmd"
+    brightness_state_topic: "smartthings/Dining Room Sconces/level/state"
+    payload_off: "off"
+    payload_on: "on"
+    #optimistic: false
+    retain: false
+
+
+  - platform: mqtt
+    name: "Dining Room Chandelier"
+    state_topic: "smartthings/Dining Room Chandelier/switch/state"
+    command_topic: "smartthings/Dining Room Chandelier/switch/cmd"
+    brightness_command_topic: "smartthings/Dining Room Chandelier/level/cmd"
+    brightness_state_topic: "smartthings/Dining Room Chandelier/level/state"
+    payload_off: "off"
+    payload_on: "on"
+    #optimistic: false
+    retain: false
+
+
+  - platform: mqtt
+    name: "Basement Light"
+    state_topic: "smartthings/Basement Light/switch/state"
+    command_topic: "smartthings/Basement Light/switch/cmd"
+    brightness_command_topic: "smartthings/Basement Light/level/cmd"
+    brightness_state_topic: "smartthings/Basement Light/level/state"
+    payload_off: "off"
+    payload_on: "on"
+    #optimistic: false
+    retain: false
+
+
+  - platform: mqtt
+    name: "Basement Stairs Spot Lights"
+    state_topic: "smartthings/Basement Stairs Spot Lights/switch/state"
+    command_topic: "smartthings/Basement Stairs Spot Lights/switch/cmd"
+    brightness_command_topic: "smartthings/Basement Stairs Spot Lights/level/cmd"
+    brightness_state_topic: "smartthings/Basement Stairs Spot Lights/level/state"
+    payload_off: "off"
+    payload_on: "on"
+    #optimistic: false
+    retain: false
+
+
+  - platform: mqtt
+    name: "Dads Bedroom"
+    state_topic: "smartthings/Dads Bedroom/switch/state"
+    command_topic: "smartthings/Dads Bedroom/switch/cmd"
+    brightness_command_topic: "smartthings/Dads Bedroom/level/cmd"
+    brightness_state_topic: "smartthings/Dads Bedroom/level/state"
+    payload_off: "off"
+    payload_on: "on"
+    #optimistic: false
+    retain: false
+
+
+  - platform: mqtt
+    name: "Master Bedroom"
+    state_topic: "smartthings/Master Bedroom/switch/state"
+    command_topic: "smartthings/Master Bedroom/switch/cmd"
+    brightness_command_topic: "smartthings/Master Bedroom/level/cmd"
+    brightness_state_topic: "smartthings/Master Bedroom/level/state"
+    payload_off: "off"
+    payload_on: "on"
+    #optimistic: false
+    retain: false
+
+
+  - platform: mqtt
+    name: "Living Room Main Lights"
+    state_topic: "smartthings/Living Room Main Lights/switch/state"
+    command_topic: "smartthings/Living Room Main Lights/switch/cmd"
+    brightness_command_topic: "smartthings/Living Room Main Lights/level/cmd"
+    brightness_state_topic: "smartthings/Living Room Main Lights/level/state"
+    payload_off: "off"
+    payload_on: "on"
+    #optimistic: false
+    retain: false
+
+
+  - platform: mqtt
+    name: "Living Room Spot Lights"
+    state_topic: "smartthings/Living Room Spot Lights/switch/state"
+    command_topic: "smartthings/Living Room Spot Lights/switch/cmd"
+    brightness_command_topic: "smartthings/Living Room Spot Lights/level/cmd"
+    brightness_state_topic: "smartthings/Living Room Spot Lights/level/state"
+    payload_off: "off"
+    payload_on: "on"
+    #optimistic: false
+    retain: false
+
+  - platform: mqtt
+    name: "Mataji Room"
+    state_topic: "smartthings/Mataji Room/switch/state"
+    command_topic: "smartthings/Mataji Room/switch/cmd"
+    brightness_command_topic: "smartthings/Mataji Room/level/cmd"
+    brightness_state_topic: "smartthings/Mataji Room/level/state"
+    payload_off: "off"
+    payload_on: "on"
+    #optimistic: false
+    retain: false
+
+
+  - platform: mqtt
+    name: "Stairs Main Lights"
+    state_topic: "smartthings/Stairs Main Lights/switch/state"
+    command_topic: "smartthings/Stairs Main Lights/switch/cmd"
+    brightness_command_topic: "smartthings/Stairs Main Lights/level/cmd"
+    brightness_state_topic: "smartthings/Stairs Main Lights/level/state"
+    payload_off: "off"
+    payload_on: "on"
+    #optimistic: false
+    retain: false
+
+
+  - platform: mqtt
+    name: "Upstairs Hallway Main Lights"
+    state_topic: "smartthings/Upstairs Hallway Main Lights/switch/state"
+    command_topic: "smartthings/Upstairs Hallway Main Lights/switch/cmd"
+    brightness_command_topic: "smartthings/Upstairs Hallway Main Lights/level/cmd"
+    brightness_state_topic: "smartthings/Upstairs Hallway Main Lights/level/state"
+    payload_off: "off"
+    payload_on: "on"
+    #optimistic: false
+    retain: false
+
+alert:
+  alert_garage_highbay_light:
+    name: Garage HighBay Light ON
+    done_message: Garage HighBay Light OFF
+    entity_id: switch.garage_highbay_light
+    state: 'on'
+    repeat: 5
+    skip_first: true
+    notifiers:
+      - telegram
+#      - html

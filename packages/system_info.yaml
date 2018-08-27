@@ -1,0 +1,226 @@
+homeassistant:
+  customize:
+    sensor.system_ecobee:
+      icon: mdi:google-keep
+    sensor.system_vaibhavsmbp:
+      icon: mdi:laptop-mac
+    sensor.system_basement_tv:
+      icon: mdi:television
+    sensor.system_googlemini_4:
+      icon: mdi:speaker
+    sensor.system_googlehomemini:
+      icon: mdi:speaker
+    sensor.system_chromecast_livingroom:
+      icon: mdi:cast
+    sensor.system_googlemini_1:
+      icon: mdi:speaker
+    sensor.system_googlemini_2:
+      icon: mdi:speaker
+    sensor.system_fyre3b111f:
+      icon: mdi:run-fast
+    sensor.system_b01f81350919:
+      icon: mdi:speaker
+    sensor.system_irrigation1627:
+      icon: mdi:raspberrypi
+    sensor.system_fyrea9c69f:
+      icon: mdi:run-fast
+    sensor.system_rokulivingroom:
+      icon: mdi:youtube-tv
+    sensor.system_fyre3bf958:
+      icon: mdi:run-fast
+    sensor.system_honeywelldas:
+      icon: mdi:cctv
+    sensor.system_adtsecurity0:
+      icon: mdi:home-automation
+    sensor.system_a4da2229e234:
+      icon: mdi:cctv
+    sensor.system_wyzecamv2_maindoor:
+      icon: mdi:cctv
+    sensor.system_a4da2229e0c2:
+      icon: mdi:cctv
+    sensor.system_fyre3f7822:
+      icon: mdi:run-fast
+    sensor.system_canon_printer:
+      icon: mdi:printer
+    sensor.system_googlemini_3:
+      icon: mdi:speaker
+    sensor.system_lutron_hub:
+      icon: mdi:home-automation
+    sensor.system_hassio:
+      icon: mdi:home-assistant
+    sensor.system_desktopnhsa5ju:
+      icon: mdi:desktop-classic
+    sensor.system_24fd5b026ee7:
+      icon: mdi:home-automation
+    sensor.system_6cbfb5002686:
+      icon: mdi:nas
+    sensor.system_dads_s8:
+      icon: mdi:cellphone-android
+    sensor.system_terrobladezn8:
+      icon: mdi:cellphone-android
+    sensor.system_moms_cellphone:
+      icon: mdi:cellphone-android
+    sensor.system_bladedancerzz_n8:
+      icon: mdi:cellphone-android
+    sensor.system_esp_81166c:
+      icon: mdi:alarm-light
+    sensor.system_gearfit2e61b:
+      icon: mdi:watch
+    sensor.system_android28ed3fd8b3166ee4:
+      icon: mdi:cellphone-android
+    sensor.system_raspberrypi:
+      icon: mdi:raspberrypi
+    sensor.system_laptopdad:
+      icon: mdi:laptop-windows
+    sensor.system_terrobladezoptiplex3010:
+      icon: mdi:desktop-clasic
+
+  customize_glob:
+    sensor.system_*:
+      custom_ui_state_card: state-card-custom-ui
+      templates:
+        hs_color: "if (state === 'Online') return [0, 0];
+        else if (state === 'Unknown') return [40, 70];
+        else if (state === 'Offline') return [0, 85];"
+
+sensor:
+  - platform: template
+    sensors:
+        system_ecobee:
+          friendly_name: 'Ecobee'
+          value_template: "{{ 'Online' if is_state('device_tracker.ecobee', 'home') else 'Offline' }}"
+        system_vaibhavsmbp:
+          friendly_name: 'MacBook Pro'
+          value_template: "{{ 'Online' if is_state('device_tracker.vaibhavsmbp', 'home') else 'Offline' }}"
+        system_basement_tv:
+          friendly_name: 'Basement TV'
+          value_template: "{{ 'Online' if is_state('device_tracker.basement_tv', 'home') else 'Offline' }}"
+        system_googlemini_4:
+          friendly_name: 'Mini 4'
+          value_template: "{{ 'Online' if is_state('device_tracker.googlemini_4', 'home') else 'Offline' }}"
+
+        system_googlehomemini:
+          friendly_name: 'Mini ?'
+          value_template: "{{ 'Online' if is_state('device_tracker.googlehomemini', 'home') else 'Offline' }}"
+        system_chromecast_livingroom:
+          friendly_name: 'Living Room Chromecast'
+          value_template: "{{ 'Online' if is_state('device_tracker.chromecast_livingroom', 'home') else 'Offline' }}"
+        system_googlemini_1:
+          friendly_name: 'Mini 1'
+          value_template: "{{ 'Online' if is_state('device_tracker.googlemini_1', 'home') else 'Offline' }}"
+        system_googlemini_2:
+          friendly_name: 'Mini 2'
+          value_template: "{{ 'Online' if is_state('device_tracker.googlemini_2', 'home') else 'Offline' }}"
+
+        system_fyre3b111f:
+          friendly_name: 'Aura Home 1'
+          value_template: "{{ 'Online' if is_state('device_tracker.fyre3b111f', 'home') else 'Offline' }}"
+        system_b01f81350919:
+          friendly_name: 'Polk Assist'
+          value_template: "{{ 'Online' if is_state('device_tracker.b01f81350919', 'home') else 'Offline' }}"
+        system_irrigation1627:
+          friendly_name: 'Irrigation Hub'
+          value_template: "{{ 'Online' if is_state('device_tracker.irrigation1627', 'home') else 'Offline' }}"
+        system_fyrea9c69f:
+          friendly_name: 'Aura Home 2'
+          value_template: "{{ 'Online' if is_state('device_tracker.fyrea9c69f', 'home') else 'Offline' }}"
+
+        system_rokulivingroom:
+          friendly_name: 'Roku 3'
+          value_template: "{{ 'Online' if is_state('device_tracker.rokulivingroom', 'home') else 'Offline' }}"
+        system_fyre3bf958:
+          friendly_name: 'Aura Home 3'
+          value_template: "{{ 'Online' if is_state('device_tracker.fyre3bf958', 'home') else 'Offline' }}"
+        system_honeywelldas:
+          friendly_name: 'Honeywell DAS'
+          value_template: "{{ 'Online' if is_state('device_tracker.honeywelldas', 'home') else 'Offline' }}"
+        system_adtsecurity0:
+          friendly_name: 'Security Hub'
+          value_template: "{{ 'Online' if is_state('device_tracker.adtsecurity0', 'home') else 'Offline' }}"
+
+        system_a4da2229e234:
+          friendly_name: 'Front Cam'
+          value_template: "{{ 'Online' if is_state('device_tracker.a4da2229e234', 'home') else 'Offline' }}"
+        system_wyzecamv2_maindoor:
+          friendly_name: 'Main Door Cam'
+          value_template: "{{ 'Online' if is_state('device_tracker.wyzecamv2_maindoor', 'home') else 'Offline' }}"
+        system_a4da2229e0c2:
+          friendly_name: 'Backyard Cam'
+          value_template: "{{ 'Online' if is_state('device_tracker.a4da2229e0c2', 'home') else 'Offline' }}"
+        system_fyre3f7822:
+          friendly_name: 'Aura Home 4'
+          value_template: "{{ 'Online' if is_state('device_tracker.fyre3f7822', 'home') else 'Offline' }}"
+
+        system_canon_printer:
+          friendly_name: 'Cannon Printer'
+          value_template: "{{ 'Online' if is_state('device_tracker.canon_printer', 'home') else 'Offline' }}"
+        system_googlemini_3:
+          friendly_name: 'Google Mini 3'
+          value_template: "{{ 'Online' if is_state('device_tracker.googlemini_3', 'home') else 'Offline' }}"
+        system_lutron_hub:
+          friendly_name: 'Lutron Hub'
+          value_template: "{{ 'Online' if is_state('device_tracker.lutron_hub', 'home') else 'Offline' }}"
+        system_hassio:
+          friendly_name: 'HassIO'
+          value_template: "{{ 'Online' if is_state('device_tracker.hassio', 'home') else 'Offline' }}"
+
+        system_desktopnhsa5ju:
+          friendly_name: 'Basement Desktop'
+          value_template: "{{ 'Online' if is_state('device_tracker.desktopnhsa5ju', 'home') else 'Offline' }}"
+        system_24fd5b026ee7:
+          friendly_name: 'SmartThings HUB'
+          value_template: "{{ 'Online' if is_state('device_tracker.24fd5b026ee7', 'home') else 'Offline' }}"
+        system_6cbfb5002686:
+          friendly_name: 'Synology NAS'
+          value_template: "{{ 'Online' if is_state('device_tracker.6cbfb5002686', 'home') else 'Offline' }}"
+        system_dads_s8:
+          friendly_name: 'Dads s8'
+          value_template: "{{ 'Online' if is_state('device_tracker.dads_s8', 'home') else 'Offline' }}"
+
+        system_terrobladezn8:
+          friendly_name: 'TerroBladeZ-N8'
+          value_template: "{{ 'Online' if is_state('device_tracker.terrobladezn8', 'home') else 'Offline' }}"
+        system_moms_cellphone:
+          friendly_name: 'Moms CellPhone'
+          value_template: "{{ 'Online' if is_state('device_tracker.moms_cellphone', 'home') else 'Offline' }}"
+        system_bladedancerzz_n86:
+          friendly_name: 'BladeDancerzz N8'
+          value_template: "{{ 'Online' if is_state('device_tracker.bladedancerzz_n8', 'home') else 'Offline' }}"
+        system_esp_81166c:
+          friendly_name: 'Mataji Light?'
+          value_template: "{{ 'Online' if is_state('device_tracker.esp_81166c', 'home') else 'Offline' }}"
+
+        system_gearfit2e61b:
+          friendly_name: 'GearFit2'
+          value_template: "{{ 'Online' if is_state('device_tracker.gearfit2e61b', 'home') else 'Offline' }}"
+        system_android28ed3fd8b3166ee4:
+          friendly_name: 'What android phone'
+          value_template: "{{ 'Online' if is_state('device_tracker.android28ed3fd8b3166ee4', 'home') else 'Offline' }}"
+        system_raspberrypi:
+          friendly_name: 'Dev Pi'
+          value_template: "{{ 'Online' if is_state('device_tracker.raspberrypi', 'home') else 'Offline' }}"
+        system_terrobladezoptiplex3010:
+          friendly_name: 'Ubuntu Desktop'
+          value_template: "{{ 'Online' if is_state('device_tracker.terrobladezoptiplex3010', 'home') else 'Offline' }}"
+#        system_laptopdad:
+#          friendly_name: 'Dad's Laptop'
+#          value_template: "{{ 'Online' if is_state('device_tracker.laptopdad', 'home') else 'Offline' }}"
+automation:
+  - alias: 'Device Status'
+    initial_state: 'on'
+    trigger:
+         - platform: state
+           entity_id:
+              - sensor.system_irrigation1627
+              - sensor.system_24fd5b026ee7
+              - sensor.system_lutron_hub
+              - sensor.system_6cbfb5002686
+           to: 'offline'
+           for:
+             minutes: 5
+    action:
+      - service: notify.telegram
+        data_template:
+          title: 'Device {{ trigger.to_state.name }} is'
+          message: >
+            '{{ trigger.to_state.state }}'

@@ -1,0 +1,26 @@
+homeassistant:
+  customize:
+    group.family:
+      order: 1
+
+    device_tracker.terrobladezn8:
+      friendly_name: Vaibhav
+      entity_picture: /local/vaibhav.jpg
+    device_tracker.bladedancerzz_n8:
+      friendly_name: Himani
+      entity_picture: /local/himani.jpg
+    device_tracker.dads_s8:
+      friendly_name: Dad
+      entity_picture: /local/dad.jpg
+    device_tracker.moms_cellphone:
+      friendly_name: Mom
+      entity_picture: /local/mom.jpg
+
+group:
+  family:
+    control: hidden
+    entities:
+      - device_tracker.terrobladezn8
+      - device_tracker.bladedancerzz_n8
+      - device_tracker.dads_s8
+      - device_tracker.moms_cellphone

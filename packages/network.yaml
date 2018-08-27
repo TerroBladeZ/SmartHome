@@ -1,0 +1,61 @@
+sensor:
+# Monitor host system
+  - platform: systemmonitor
+    resources:
+      - type: disk_use_percent
+        arg: /home
+      - type: memory_free
+      - type: processor_use
+      - type: last_boot
+
+# Monitor host cpu temp
+  - platform: command_line
+    name: CPU Temp
+    command: "cat /sys/class/thermal/thermal_zone0/temp"
+    unit_of_measurement: "°C"
+    value_template: "{{ value|multiply(0.001)|round }}"
+
+# Speedtest.net
+  - platform: speedtest
+    minute: 30
+    hour:
+      - 0
+      - 6
+      - 12
+      - 18
+    monitored_conditions:
+      - download
+      - upload
+      - ping
+
+group:
+  network_view:
+    view: yes
+    name: "Network"
+    icon: mdi:access-point-network
+    entities:
+      - group.status
+      - group.phones
+      - group.personal_devices
+      - group.iot_devices
+      - group.network
+      - group.host_device
+  network:
+    name: "Network"
+    entities:
+      - sensor.speedtest_download
+      - sensor.speedtest_upload
+      - sensor.speedtest_ping
+
+  host_device:
+    name: "HA Host"
+    entities:
+      - sensor.time__date
+      - sensor.cpu_temp
+      - sensor.cpu_use
+      - sensor.processor_use
+      - sensor.memory_free
+      - sensor.ram_free
+      - sensor.disk_use_home
+      - sensor.disk_use_percent_home
+      - sensor.last_boot

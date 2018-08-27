@@ -1,0 +1,188 @@
+# homeassistant:
+#   customize:
+#     ################################################
+#     ## Node Anchors
+#     ################################################
+
+#     package.node_anchors:
+#       customize: &customize
+#         package: 'ecobee'
+
+#       exposed: &exposed
+#         <<: *customize
+#         emulated_hue_hidden: true
+#         homebridge_hidden: false
+#         critical: true
+
+#       not_exposed: &not_exposed
+#         <<: *customize
+#         emulated_hue_hidden: false
+#         homebridge_hidden: true
+#         critical: false
+
+#       hidden: &hidden
+#         <<: *customize
+#         hidden: true
+#         critical: false
+
+#     input_boolean.air_condition:
+#       <<: *exposed
+#       homebridge_name: Air Condition
+#     input_boolean.heater:
+#       <<: *exposed
+#       homebridge_name: Heater
+
+ecobee:
+  api_key: !secret ecobee_api_key
+
+# input_boolean:
+#   air_condition:
+#     name: Air Condition
+#     icon: mdi:snowflake
+#   heater:
+#     name: Heater
+#     icon: mdi:hot-tub
+
+group:
+  ########################################################
+  ##############    Ecobee Sensors    ####################
+  ########################################################
+  temperature:
+    name: Temperature Sensors
+    view: yes
+    icon: mdi:weather-cloudy
+    entities:
+      - group.weather_card_forecast
+     # - group.pollen
+      - group.ecobee_card
+      - group.ecobee_card_basement
+      - group.ecobee_card_kitchen
+      - group.ecobee_card_master_bedroom
+      - group.ecobee_dad_bedroom
+      - group.weather_card_garbage
+
+  ecobee_card:
+    name: Ecobee Living Room
+    entities:
+      - sensor.thermostat_temperature
+      - sensor.thermostat_humidity
+      - binary_sensor.thermostat_occupancy
+      - climate.thermostat
+
+#  ecobee_card_basement:
+#    name: Ecobee Basement
+#    entities:
+      - sensor.basement_temperature
+      - binary_sensor.basement_occupancy
+
+#  ecobee_card_kitchen:
+#    name: Ecobee Kitchen
+#    entities:
+      - sensor.kitchen_temperature
+      - binary_sensor.kitchen_occupancy
+
+#  ecobee_card_master_bedroom:
+#    name: Ecobee Master Bedroom
+#    entities:
+      - sensor.master_bedroom_temperature
+      - binary_sensor.master_bedroom_occupancy
+
+#  ecobee_dad_bedroom:
+#    name: Ecobee Dads Room
+#    entities:
+      - sensor.dads_bedroom_temperature
+      - binary_sensor.dads_bedroom_occupancy
+#   Ecobee:
+#     - weather.home
+#     - binary_sensor.kids_room_occupancy
+#     - binary_sensor.downstairs_Occupancy
+#     - sensor.kids_room_temperature
+#     - sensor.downstairs_temperature
+#     - sensor.home_humidity
+#     - sensor.home_temperature
+#     - automation.turn_off_ac_after_3_hours_of_cooling
+
+# automation:
+# ###############################################################################
+# # Turn OFF AC after 3 hours of cooling
+# ###############################################################################
+#   - alias: Turn Off AC After 3 Hours of Cooling
+#     initial_state: true
+#     trigger:
+#       - platform: state
+#         entity_id: climate.home
+#         to: 'cool'
+#         for: '03:00:00'
+#     action:
+#       - service: climate.set_operation_mode
+#         data:
+#           entity_id: climate.home
+#           operation_mode: 'off'
+#       - service: script.notify_me
+#         data_template:
+#           message: "Air Condition has been ON for 3 hours.
+#                     Turning it Off to save power."
+
+# ###############################################################################
+# # Set Thermostat status to Away mode when noone is away
+# ###############################################################################
+#   - alias: Ecobee Away Mode
+#     initial_state: true
+#     hide_entity: true
+#     trigger:
+#       platform: state
+#       entity_id: alarm_control_panel.simplisafe
+#     condition:
+#       - condition: template
+#         value_template: "{{ 'True' if trigger.from_state else 'False' }}"
+#       - condition: template
+#         value_template: '{{ states.alarm_control_panel.simplisafe.state != "unknown" }}'
+#       - condition: template
+#         value_template: '{{ states.alarm_control_panel.simplisafe.state | trim != "" }}'
+#       - condition: template
+#         value_template: '{{ states.alarm_control_panel.simplisafe.state | lower | trim == "armed_away" }}'
+#     action:
+#       - service: climate.set_away_mode
+#         data:
+#           entity_id: climate.home
+#           away_mode: true
+#       - service: script.notify_me
+#         data_template:
+#           message: "Your Home Security System is now set to Away mode.
+#                     Ecobee is set to AWAY mode as well."
+
+# ###############################################################################
+# # Turn ON AC Or Heater On Demand
+# ###############################################################################
+#   - alias: Turn ON AC Or Heater
+#     initial_state: true
+#     hide_entity: true
+#     trigger:
+#       - platform: state
+#         entity_id:
+#           - input_boolean.heater
+#           - input_boolean.air_condition
+#         to: 'on'
+#     action:
+#       - service: climate.set_operation_mode
+#         data:
+#           entity_id: climate.home
+#           operation_mode: "{{ 'cool' if trigger.entity_id == 'input_boolean.air_condition' else 'heat' }}"
+
+# ###############################################################################
+# # Turn OFF AC Or Heater On Demand
+# ###############################################################################
+#   - alias: Turn Off AC Or Heater
+#     initial_state: true
+#     hide_entity: true
+#     trigger:
+#       - platform: state
+#         entity_id:
+#           - input_boolean.heater
+#           - input_boolean.air_condition
+#         to: 'off'
+#     action:
+#       - service: climate.set_operation_mode
+#         data:
+#           entity_id: climate.home
+#           operation_mode: 'off'

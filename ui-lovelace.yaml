@@ -1,0 +1,318 @@
+
+resources:
+  - url: /local/lovelace_ui/plan-coordinates.js
+    type: js
+  - url: /local/lovelace_ui/monster-card.js
+    type: js
+  - url: /local/custom_ui/weather-card.js
+    type: js
+
+
+title: Home
+views:
+
+  - title: Home
+    cards:
+      - type: "custom:weather-card"
+        entity_weather: weather.yweather
+        entity_sun: sun.sun
+      - type: glance
+        title: Family
+        show_header_toggle: false
+        entities:
+          - device_tracker.terrobladezn8
+          - device_tracker.bladedancerzz_n8
+          - device_tracker.dads_s8
+          - device_tracker.moms_cellphone
+      - type: glance
+        title: Birthday Countdown
+        show_header_toggle: true
+        entities:
+          - input_label.dad_birthday_days2go
+          - input_label.himani_birthday_days2go
+          - input_label.mom_birthday_days2go
+          - input_label.vaibhav_birthday_days2go
+
+      - type: glance
+        title: Security
+        show_header_toggle: true
+        entities:
+          - alarm_control_panel.house
+          - binary_sensor.front_door
+          - binary_sensor.back_door
+
+      - type: entities
+        title: Holiday Light
+        show_header_toggle: false
+        entities:
+          - light.holiday_lights
+          - input_select.holiday_led_effect
+
+      - type: entities
+        title: Morning Cycle
+        show_header_toggle: false
+        entities:
+          - sensor.cycle1_running
+          - sensor.cycle1_zone_being_watered
+          - timer.cycle1_zone_duration
+          - sensor.last_irrigated_time
+
+          - input_boolean.cycle1_enable
+          - sensor.cycle1_next_run_time
+          - input_boolean.cycle1_manual_run
+          - input_select.cycle1_schedule_time
+          - input_select.cycle1_watering_days
+          - input_number.cycle1_zone1_duration
+          - input_number.cycle1_zone2_duration
+          - input_number.cycle1_zone3_duration
+          - input_number.cycle1_zone4_duration
+          - input_number.cycle1_zone5_duration
+      - type: entities
+        title: Afternoon Cycle
+        show_header_toggle: false
+        entities:
+          - sensor.cycle2_running
+          - sensor.cycle2_zone_being_watered
+          - timer.cycle2_zone_duration
+          - sensor.last_irrigated_time
+
+          - input_boolean.cycle2_enable
+          - sensor.cycle2_next_run_time
+          - input_boolean.cycle2_manual_run
+          - input_select.cycle2_schedule_time
+          - input_select.cycle2_watering_days
+          - input_number.cycle2_zone1_duration
+          - input_number.cycle2_zone2_duration
+          - input_number.cycle2_zone3_duration
+          - input_number.cycle2_zone4_duration
+          - input_number.cycle2_zone5_duration
+      - type: glance
+        title: Valves Status
+        show_header_toggle: false
+        entities:
+          - sensor.zone1_status
+          - sensor.zone2_status
+          - sensor.zone3_status
+          - sensor.zone4_status
+          - sensor.zone5_status
+      - type: glance
+        title: Valves
+        show_header_toggle: false
+        entities:
+          - switch.zone1_valve
+          - switch.zone2_valve
+          - switch.zone3_valve
+          - switch.zone4_valve
+          - switch.zone5_valve
+
+      - type: entities
+        title: Zones
+        show_header_toggle: true
+        entities:
+          - binary_sensor.floorplan
+          - binary_sensor.entry_kiosk
+          - sun.sun
+      - type: media-control
+        entity: media_player.entry_kiosk
+      - type: entities
+        title: Trash Schedule
+        show_header_toggle: true
+        entities:
+          - sensor.trash_day
+          - sensor.trash_pickup_day
+          - input_select.trash_pickup_day
+      - type: entities
+        title: Recycle Schedule
+        show_header_toggle: true
+        entities:
+          - sensor.recycle_day
+          - sensor.recycle_pickup_day
+          - sensor.recycle_pickup_week
+          - input_select.recycle_pickup_day
+          - sensor.current_week
+          - input_select.recycle_pickup_week
+      - type: entities
+        title: Date Time
+        show_header_toggle: true
+        entities:
+          - sensor.time
+          - sensor.date
+          - sensor.time_utc
+          - sensor.date__time
+          - sensor.time__date
+          - sensor.internet_time
+
+
+      - type: entities
+        title: Music
+        show_header_toggle: false
+        entities:
+          - input_select.media_player
+          - input_number.volume_radio
+          - input_select.music
+          - switch.google_music
+          - input_select.radio_station
+          - input_boolean.play_radio
+
+
+      - type: entities
+        title: Ecobee Living Room
+        show_header_toggle: true
+        entities:
+          - sensor.thermostat_temperature
+          - sensor.thermostat_humidity
+          - binary_sensor.thermostat_occupancy
+          - climate.thermostat
+          - sensor.basement_temperature
+          - binary_sensor.basement_occupancy
+          - sensor.kitchen_temperature
+          - binary_sensor.kitchen_occupancy
+          - sensor.master_bedroom_temperature
+          - binary_sensor.master_bedroom_occupancy
+          - sensor.dads_bedroom_temperature
+          - binary_sensor.dads_bedroom_occupancy
+
+      - type: glance
+        title: Network
+        show_header_toggle: true
+        entities:
+          - entity: sensor.speedtest_download
+            name: Download
+          - entity: sensor.speedtest_upload
+            name: Upload
+          - entity: sensor.speedtest_ping
+            name: Ping
+          - entity: sensor.time__date
+            name: Time & Date
+          - entity: sensor.cpu_temp
+            name: CPU Temp
+          - entity: sensor.processor_use
+            name: Processor Use
+          - entity: sensor.memory_free
+            name: Memory Left
+          - entity: sensor.disk_use_percent_home
+            name: Disk Use
+          - entity: sensor.last_boot
+            name: Last Boot
+      - type: entities
+        title: Smart Switch
+        show_header_toggle: true
+        entities:
+          - light.kitchen_light
+          - light.dining_room_sconces
+          - light.dining_room_chandelier
+          - light.basement_light
+          - light.basement_stairs_spot_lights
+          - light.dads_bedroom
+          - light.master_bedroom
+          - light.living_room_main_lights
+          - light.living_room_spot_lights
+          - light.mataji_room
+          - light.stairs_main_lights
+          - light.upstairs_hallway_main_lights
+          - light.front_porch_sconces
+          - light.laundry_room_main_lights
+          - light.foyer_chandelier
+      - type: entities
+        title: Backyard Lights
+        show_header_toggle: true
+        entities:
+          - switch.switch_1
+          - switch.switch_2
+
+      - type: entities
+        title: Holiday Light
+        show_header_toggle: true
+        entities:
+          - light.holiday_lights
+
+      - type: glance
+        title: Smart Hubs
+        show_header_toggle: true
+        entities:
+          - sensor.system_hassio
+          - sensor.system_24fd5b026ee7
+          - sensor.system_lutron_hub
+          - sensor.system_honeywelldas
+          - sensor.system_irrigation1627
+          - sensor.system_adtsecurity0
+          - sensor.system_raspberrypi
+          - sensor.system_esp_81166c
+          - sensor.system_ecobee
+      - type: glance
+        title: Computers
+        show_header_toggle: true
+        entities:
+          - sensor.system_6cbfb5002686
+          - sensor.system_vaibhavsmbp
+          - sensor.system_desktopnhsa5ju
+          - sensor.system_laptopdad
+          - sensor.system_terrobladezoptiplex3010
+          - sensor.system_canon_printer
+      - type: glance
+        title: Speakers
+        show_header_toggle: true
+        entities:
+          - sensor.system_b01f81350919
+          - sensor.system_googlemini_1
+          - sensor.system_googlemini_2
+          - sensor.system_googlemini_3
+          - sensor.system_googlemini_4
+          - sensor.system_googlehomemini
+      - type: glance
+        title: Cellphones
+        show_header_toggle: true
+        entities:
+          - sensor.system_dads_s8
+          - sensor.system_moms_cellphone
+          - sensor.system_terrobladezn8
+          - sensor.system_bladedancerzz_n8
+          - sensor.system_android28ed3fd8b3166ee4
+          - sensor.system_gearfit2e61b
+      - type: glance
+        title: Camera
+        show_header_toggle: true
+        entities:
+          - sensor.system_a4da2229e234
+          - sensor.system_wyzecamv2_maindoor
+          - sensor.system_a4da2229e0c2
+      - type: glance
+        title: Motion Sensor
+        show_header_toggle: true
+        entities:
+          - sensor.system_fyre3b111f
+          - sensor.system_fyrea9c69f
+          - sensor.system_fyre3bf958
+          - sensor.system_fyre3f7822
+      - type: glance
+        title: Tvs
+        show_header_toggle: true
+        entities:
+          - sensor.system_rokulivingroom
+          - sensor.system_chromecast_livingroom
+          - sensor.system_basement_tv
+
+      - type: media-control
+        entity: media_player.entry_kiosk
+      - type: media-control
+        entity: media_player.master_bedroom
+      - type: media-control
+        entity: media_player.xbr65x810c
+      - type: media-control
+        entity: media_player.mataji_room_speaker
+      - type: media-control
+        entity: media_player.mataji__dad_group
+      - type: media-control
+        entity: media_player.basement_office_speaker
+      - type: media-control
+        entity: media_player.havan_group
+      - type: media-control
+        entity: media_player.home_group
+      - type: media-control
+        entity: media_player.basement_speaker
+      - type: media-control
+        entity: media_player.dads_room_speaker
+      - type: media-control
+        entity: media_player.living_room_tv
+      - type: media-control
+        entity: media_player.living_room

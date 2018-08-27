@@ -1,0 +1,6 @@
+"*.*":
+  custom_ui_state_card: state-card-custom-ui
+  show_last_changed: true
+
+"sensor.*system":
+  hidden: true

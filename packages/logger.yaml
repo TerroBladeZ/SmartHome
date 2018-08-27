@@ -1,0 +1,85 @@
+################################################################
+## Packages / Logger
+################################################################
+
+################################################
+## Customize
+################################################
+
+homeassistant:
+  customize:
+    ################################################
+    ## Node Anchors
+    ################################################
+
+    package.node_anchors:
+      customize: &customize
+        package: 'logger'
+
+      expose: &expose
+        <<: *customize
+        haaska_hidden: false
+        homebridge_hidden: false
+
+################################################
+## Logger
+################################################
+
+# Log Severities: notset, debug, info, warn, warning, error, fatal, critical
+logger:
+  default: debug
+  logs:
+    # debug
+    homeassistant.components.sensor.darksky: debug
+
+    # info
+    bellows: info
+    homeassistant.bootstrap: info
+    homeassistant.components.websocket_api: info
+    homeassistant.core: info
+    homeassistant.helpers.script: info
+
+    # warn
+    botocore: warn
+    dlipower: warn
+    homeassistant.components.alarm_control_panel: warn
+    homeassistant.components.alert: warn
+    homeassistant.components.api: warn
+    homeassistant.components.automation: warn
+    homeassistant.components.binary_sensor: warn
+    homeassistant.components.camera: warn
+    homeassistant.components.climate: warn
+    homeassistant.components.cover: warn
+    homeassistant.components.device_tracker: warn
+    homeassistant.components.ecobee: warn
+    homeassistant.components.http: warn
+    homeassistant.components.light: warn
+    homeassistant.components.lock: warn
+    homeassistant.components.media_player: warn
+    homeassistant.components.mqtt: warn
+    homeassistant.components.notify: warn
+    homeassistant.components.recorder: warn
+    homeassistant.components.remote: warn
+    homeassistant.components.sensor: warn
+    homeassistant.components.switch: warn
+    homeassistant.components.telegram_bot: warn
+    homeassistant.components.usps: warn
+    homeassistant.components.xiaomi: warn
+    homeassistant.helpers: warn
+    homeassistant.loader: warn
+    myusps: warn
+    libopenzwave: warn
+    openzwave: warn
+    phue: warn
+    plexapi: warn
+    pyatv: warn
+    pychromecast: warn
+    pyecobee: warn
+    pytradfri: warn
+    PyXiaomiGateway: warn
+    root: warn
+    telegram: warn
+    urllib3: warn
+
+    # error
+    homeassistant.components.zwave: error

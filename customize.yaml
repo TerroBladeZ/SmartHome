@@ -1,0 +1,15 @@
+group.all_automations:
+  hidden: false
+  friendly_name: 'Automations'
+
+group.all_scripts:
+  hidden: false
+  friendly_name: 'Scripts'
+
+group.all_devices:
+  hidden: false
+  friendly_name: 'Devices'
+
+binary_sensor.floorplan:
+  custom_ui_state_card: state-card-floorplan
+  config: !include floorplan.yaml
