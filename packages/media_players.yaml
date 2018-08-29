@@ -1,6 +1,21 @@
-#################
-### Google music
-#################
+########################################################################
+
+#                           Gmusic + Radio with Hassio
+#    Add the component from link to your custom_component/switch
+#   https://github.com/TerroBladeZ/SmartHome/blob/master/custom_components/switch/gmusic.py
+#   Save this package to your config/packages folder
+#   Update gmusic.yaml with entity_ids of your media player
+#   Add below lines to your secrets.yaml
+#        gmusic_user: your email here
+#        gpassword: your password here
+#        gmusic_device_id: 123456789abcdefg
+
+#   Restart HomeAssistant, check error log in info page.
+#   It’ll now say 'invalid id, valid ids for this account are… " copy the one that’s the same number of
+#   characters as you just used (16 digit). Restart HA and you should be gold.
+#   Update Radio links in automation section under "Music Player - Play Radio"
+
+########################################################################
 
 input_select:
   music:
@@ -10,7 +25,7 @@ input_select:
     icon: mdi:playlist-play
   media_player:
     name: Speakers
-    options: # entity_ids of your media players
+    options: # update entity_ids for your media players
      - "living_room_speaker" # dads rooms
      - "basement_office_speaker"
      - "master_bedroom"
@@ -59,7 +74,6 @@ group:
       - input_boolean.play_radio
       - input_select.google_music
 
-
   cca:
     - media_player.livingroom
     - media_player.living_room_speaker
@@ -89,10 +103,11 @@ input_number:
     step: 0.05
     initial: '0.2'
 
-###   Do Not Delete   ###
+###   Command line to install gmusicapi
 shell_command:
   install_gmusic: pip3 install gmusicapi
 
+### Automations to play radio, Sync Music, Stop Music.
 automation:
   - alias: homeassistant_start_gmusic
     hide_entity: true
@@ -102,7 +117,7 @@ automation:
     action:
       - service: shell_command.install_gmusic
 
-      
+# for Radio...Change links to your likings in data_template
   - alias: Music Player - Play Radio
     initial_state: on
     hide_entity: true
