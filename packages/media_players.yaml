@@ -1,10 +1,12 @@
 ########################################################################
 
 #                           Gmusic + Radio with Hassio
-#    Add the component from link to your custom_component/switch
+
+#    Add custom component from the link below to your custom_component/switch
 #   https://github.com/TerroBladeZ/SmartHome/blob/master/custom_components/switch/gmusic.py
-#   Save this package to your config/packages folder
-#   Update gmusic.yaml with entity_ids of your media player
+#   Save media_players.yaml package to your config/packages folder.
+#   Update gmusic.yaml with entity_ids of your media player.
+
 #   Add below lines to your secrets.yaml
 #        gmusic_user: your email here
 #        gpassword: your password here
@@ -13,6 +15,13 @@
 #   Restart HomeAssistant, check error log in info page.
 #   It’ll now say 'invalid id, valid ids for this account are… " copy the one that’s the same number of
 #   characters as you just used (16 digit). Restart HA and you should be gold.
+
+#   Different approach of getting the device id is below.
+#   1. go to play.google.com
+#   2. go to settings and look for My devices.
+#   3. hover over deauthorize button for any device and do inspect (right click in chrome)
+#   4. you will find data-device-id=“0x3dss31rd212a1c84”. characters after 0x is your device ID.
+
 #   Update Radio links in automation section under "Music Player - Play Radio"
 
 ########################################################################
