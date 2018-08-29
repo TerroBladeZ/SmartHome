@@ -1,3 +1,4 @@
+# To Beautify Lovelace
 homeassistant:
   customize:
     sensor.system_ecobee:
@@ -86,7 +87,7 @@ homeassistant:
 sensor:
   - platform: template
     sensors:
-        system_ecobee:
+        system_ecobee:tates
           friendly_name: 'Ecobee'
           value_template: "{{ 'Online' if is_state('device_tracker.ecobee', 'home') else 'Offline' }}"
         system_vaibhavsmbp:
@@ -181,7 +182,7 @@ sensor:
           friendly_name: 'TerroBladeZ-N8'
           value_template: "{{ 'Online' if is_state('device_tracker.terrobladezn8', 'home') else 'Offline' }}"
         system_moms_cellphone:
-          friendly_name: 'Moms CellPhone'
+          friendly_name: 'Moms CellPhone'tates
           value_template: "{{ 'Online' if is_state('device_tracker.moms_cellphone', 'home') else 'Offline' }}"
         system_bladedancerzz_n86:
           friendly_name: 'BladeDancerzz N8'
@@ -224,3 +225,44 @@ automation:
           title: 'Device {{ trigger.to_state.name }} is'
           message: >
             '{{ trigger.to_state.state }}'
+group:
+  HomeAlone:
+    name: Device Status
+    entities:
+      - sensor.system_ecobee
+      - sensor.system_vaibhavsmbp
+      - sensor.system_basement_tv
+      - sensor.system_googlemini_4
+      - sensor.system_googlehomemini
+      - sensor.system_chromecast_livingroom
+      - sensor.system_googlemini_1
+      - sensor.system_googlemini_2
+      - sensor.system_fyre3b111f
+      - sensor.system_b01f81350919
+      - sensor.system_irrigation1627
+      - sensor.system_fyrea9c69f
+      - sensor.system_rokulivingroom
+      - sensor.system_fyre3bf958
+      - sensor.system_honeywelldas
+      - sensor.system_adtsecurity0
+      - sensor.system_a4da2229e234
+      - sensor.system_wyzecamv2_maindoor
+      - sensor.system_a4da2229e0c2
+      - sensor.system_fyre3f7822
+      - sensor.system_canon_printer
+      - sensor.system_googlemini_3
+      - sensor.system_lutron_hub
+      - sensor.system_hassio
+      - sensor.system_desktopnhsa5ju
+      - sensor.system_24fd5b026ee7
+      - sensor.system_6cbfb5002686
+      - sensor.system_dads_s8
+      - sensor.system_terrobladezn8
+      - sensor.system_moms_cellphone
+      - sensor.system_bladedancerzz_n8
+      - sensor.system_esp_81166c
+      - sensor.system_gearfit2e61b
+      - sensor.system_android28ed3fd8b3166ee4
+      - sensor.system_raspberrypi
+      - sensor.system_laptopdad
+      - sensor.system_terrobladezoptiplex3010
