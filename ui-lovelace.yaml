@@ -1,37 +1,151 @@
-
 resources:
-  - url: /local/lovelace_ui/plan-coordinates.js
-    type: js
-  - url: /local/lovelace_ui/monster-card.js
-    type: js
   - url: /local/custom_ui/weather-card.js
     type: js
+  - url: /local/lovelace_ui/plan-coordinates/plan-coordinates.js
+    type: js
+  - url: /local/lovelace_ui/monster-card/monster-card.js?v=0.2.3
+    type: js
 
-
+  - url: /local/lovelace_ui/vertical-stack-in-card/vertical-stack-in-card.js?v=0.0.6
+    type: js
+  - url: /local/lovelace_ui/slider-entity-row/slider-entity-row.js
+    type: js
+  - url: /local/lovelace_ui/useful-markdown-card/useful-markdown-card.js
+    type: js
+  - url: /local/lovelace_ui/gauge-card/gauge-card.js
+    type: js
+  - url: /local/lovelace_ui/circle-sensor-card/circle-sensor-card.js?v=0
+    type: module
+  - url: /local/lovelace_ui/home-setter/home-setter.js?v=0.0.1
+    type: js
+  - url: /local/lovelace_ui/tracker-card/tracker-card.js?v=0.1.4
+    type: js
+  - url: /local/lovelace_ui/aftership/state-card-aftership.js
+    type: js
+  - url: /local/lovelace_ui/light-slider/light-slider-element.js
+    type: js
+  - url: /local/lovelace_ui/group-card/group-card.js
+    type: js
+  - url: /local/lovelace_ui/state-element/state-element.js
+    type: js
+  - url: /local/lovelace_ui/text-element/text-element.js
+    type: js
+  - url: /local/lovelace_ui/username-element/username-element.js
+    type: js
+  - url: /local/lovelace_ui/state-attribute-element/state-attribute-element.js
+    type: js
 title: Home
 views:
-
   - title: Home
     cards:
+
+#################################################################
+#                                                               #
+#                           Presence                            #
+#                                                               #
+#################################################################
+
+      - type: vertical-stack
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: picture-elements
+                image: /local/photo/vaibhav.jpg
+                elements:
+                  - type: state-label
+                    entity: device_tracker.terrobladezn8
+                    style:
+                      top: 93%
+                      left: 20%
+                      color: yellow
+                  - type: state-icon
+                    entity: input_label.vaibhav_birthday_days2go
+                    style:
+                      top: 92%
+                      left: 77%
+                      color: yellow
+                      "--paper-item-icon-color": yellow
+                  - type: state-label
+                    entity: input_label.vaibhav_birthday_days2go
+                    style:
+                      top: 93%
+                      left: 90%
+                      color: yellow
+
+              - type: picture-elements
+                image: /local/photo/himani.jpg
+                elements:
+                  - type: state-label
+                    entity: device_tracker.bladedancerzz_n8
+                    style:
+                      top: 92%
+                      left: 15%
+                      color: yellow
+                  - type: state-icon
+                    entity: input_label.himani_birthday_days2go
+                    style:
+                      top: 91%
+                      left: 77%
+                      color: yellow
+                      "--paper-item-icon-color": yellow
+                  - type: state-label
+                    entity: input_label.himani_birthday_days2go
+                    style:
+                      top: 92%
+                      left: 90%
+                      color: yellow
+
+          - type: horizontal-stack
+            cards:
+              - type: picture-elements
+                image: /local/photo/dad.jpg
+                elements:
+                  - type: state-label
+                    entity: device_tracker.dads_s8
+                    style:
+                      top: 93%
+                      left: 20%
+                      color: yellow
+                  - type: state-icon
+                    entity: input_label.dad_birthday_days2go
+                    style:
+                      top: 92%
+                      left: 77%
+                      color: yellow
+                      "--paper-item-icon-color": yellow
+                  - type: state-label
+                    entity: input_label.dad_birthday_days2go
+                    style:
+                      top: 93%
+                      left: 90%
+                      color: yellow
+
+              - type: picture-elements
+                image: /local/photo/mom.jpg
+                elements:
+                  - type: state-label
+                    entity: device_tracker.moms_cellphone
+                    style:
+                      top: 92%
+                      left: 15%
+                      color: yellow
+                  - type: state-icon
+                    entity: input_label.mom_birthday_days2go
+                    style:
+                      top: 91%
+                      left: 77%
+                      color: yellow
+                      "--paper-item-icon-color": yellow
+                  - type: state-label
+                    entity: input_label.mom_birthday_days2go
+                    style:
+                      top: 92%
+                      left: 90%
+                      color: yellow
+
       - type: "custom:weather-card"
         entity_weather: weather.yweather
         entity_sun: sun.sun
-      - type: glance
-        title: Family
-        show_header_toggle: false
-        entities:
-          - device_tracker.terrobladezn8
-          - device_tracker.bladedancerzz_n8
-          - device_tracker.dads_s8
-          - device_tracker.moms_cellphone
-      - type: glance
-        title: Birthday Countdown
-        show_header_toggle: true
-        entities:
-          - input_label.dad_birthday_days2go
-          - input_label.himani_birthday_days2go
-          - input_label.mom_birthday_days2go
-          - input_label.vaibhav_birthday_days2go
 
       - type: glance
         title: Security
@@ -56,7 +170,6 @@ views:
           - sensor.cycle1_zone_being_watered
           - timer.cycle1_zone_duration
           - sensor.last_irrigated_time
-
           - input_boolean.cycle1_enable
           - sensor.cycle1_next_run_time
           - input_boolean.cycle1_manual_run
@@ -75,7 +188,6 @@ views:
           - sensor.cycle2_zone_being_watered
           - timer.cycle2_zone_duration
           - sensor.last_irrigated_time
-
           - input_boolean.cycle2_enable
           - sensor.cycle2_next_run_time
           - input_boolean.cycle2_manual_run
@@ -86,51 +198,7 @@ views:
           - input_number.cycle2_zone3_duration
           - input_number.cycle2_zone4_duration
           - input_number.cycle2_zone5_duration
-      - type: glance
-        title: Valves Status
-        show_header_toggle: false
-        entities:
-          - sensor.zone1_status
-          - sensor.zone2_status
-          - sensor.zone3_status
-          - sensor.zone4_status
-          - sensor.zone5_status
-      - type: glance
-        title: Valves
-        show_header_toggle: false
-        entities:
-          - switch.zone1_valve
-          - switch.zone2_valve
-          - switch.zone3_valve
-          - switch.zone4_valve
-          - switch.zone5_valve
 
-      - type: entities
-        title: Zones
-        show_header_toggle: true
-        entities:
-          - binary_sensor.floorplan
-          - binary_sensor.entry_kiosk
-          - sun.sun
-      - type: media-control
-        entity: media_player.entry_kiosk
-      - type: entities
-        title: Trash Schedule
-        show_header_toggle: true
-        entities:
-          - sensor.trash_day
-          - sensor.trash_pickup_day
-          - input_select.trash_pickup_day
-      - type: entities
-        title: Recycle Schedule
-        show_header_toggle: true
-        entities:
-          - sensor.recycle_day
-          - sensor.recycle_pickup_day
-          - sensor.recycle_pickup_week
-          - input_select.recycle_pickup_day
-          - sensor.current_week
-          - input_select.recycle_pickup_week
       - type: entities
         title: Date Time
         show_header_toggle: true
@@ -154,36 +222,163 @@ views:
           - input_select.radio_station
           - input_boolean.play_radio
 
+#ecobee
+      - type: vertical-stack
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: custom:circle-sensor-card
+                entity: sensor.master_bedroom_temperature
+                name: M-Bedroom Temp
+                max: 95
+                min: 50
+                stroke_width: 7
+                gradient: true
+                fill: rgb(49,98,113)
+                units: ' ºf'
+                show_max: false
+                font_style:
+                  color: white
+                  font-size: 1.25em
+                  font-family: 'Times New Roman'
+                color_stops:
+                  55: '#ba4646'
+                  75: '#f37735'
+                  85: '#ff0000'
+                style:
+                  top: 50%
+                  left: 50%
+                  width: 75px
+                  height: 75px
+
+              - type: custom:circle-sensor-card
+                entity: sensor.dads_bedroom_temperature
+                name: Dads Room
+                max: 95
+                min: 50
+                stroke_width: 5
+                gradient: true
+                fill: rgb(49,98,113)
+                units: ' ºf'
+                show_max: false
+                font_style:
+                  color: white
+                  font-size: 1.25em
+                  font-family: 'Times New Roman'
+                color_stops:
+                  55: '#ba4646'
+                  75: '#f37735'
+                  85: '#ff0000'
+                style:
+                  top: 50%
+                  left: 50%
+                  width: 75px
+                  height: 75px
+
+              - type: custom:circle-sensor-card
+                entity: sensor.basement_temperature
+                name: Basement Temp
+                max: 95
+                min: 45
+                stroke_width: 5
+                gradient: true
+                fill: rgb(49,98,113)
+                units: ' ºf'
+                show_max: false
+                font_style:
+                  color: white
+                  font-size: 1.25em
+                  font-family: 'Times New Roman'
+                color_stops:
+                  55: '#ba4646'
+                  75: '#f37735'
+                  85: '#ff0000'
+                style:
+                  top: 50%
+                  left: 50%
+                  width: 75px
+                  height: 75px
+          - type: horizontal-stack
+            cards:
+              - type: custom:circle-sensor-card
+                entity: sensor.thermostat_humidity
+                name: Humidity
+                max: 100
+                min: 0
+                stroke_width: 5
+                gradient: true
+                fill: rgb(49,98,113)
+                units: ' %'
+                show_max: false
+                font_style:
+                  color: white
+                  font-size: 1.5em
+                  font-family: 'Times New Roman'
+                color_stops:
+                  25: '#ba4646'
+                  50: '#f37735'
+                  75: '#ff0000'
+                style:
+                  top: 50%
+                  left: 50%
+                  width: 75px
+                  height: 75px
+
+              - type: custom:circle-sensor-card
+                entity: sensor.thermostat_temperature
+                name: Living Rooom Temp
+                max: 95
+                min: 45
+                stroke_width: 5
+                gradient: true
+                fill: rgb(49,98,113)
+                units: ' ºf'
+                show_max: false
+                font_style:
+                  color: white
+                  font-size: 1.5em
+                  font-family: 'Times New Roman'
+                color_stops:
+                  55: '#ba4646'
+                  75: '#f37735'
+                  85: '#ff0000'
+                style:
+                  top: 50%
+                  left: 50%
+                  width: 75px
+                  height: 75px
 
       - type: entities
         title: Ecobee Living Room
         show_header_toggle: true
         entities:
-          - sensor.thermostat_temperature
-          - sensor.thermostat_humidity
           - binary_sensor.thermostat_occupancy
-          - climate.thermostat
-          - sensor.basement_temperature
           - binary_sensor.basement_occupancy
-          - sensor.kitchen_temperature
           - binary_sensor.kitchen_occupancy
-          - sensor.master_bedroom_temperature
           - binary_sensor.master_bedroom_occupancy
-          - sensor.dads_bedroom_temperature
           - binary_sensor.dads_bedroom_occupancy
+
+      - type: horizontal-stack
+        cards:
+          - type: custom:gauge-card
+            title: Download
+            entity: sensor.speedtest_download
+            min: 0
+            max: 250
+          - type: custom:gauge-card
+            title: Upload
+            entity: sensor.speedtest_upload
+            min: 0
+            max: 12
+            severity:
+              red: 50
+              green: 0
+              amber: 40
 
       - type: glance
         title: Network
         show_header_toggle: true
         entities:
-          - entity: sensor.speedtest_download
-            name: Download
-          - entity: sensor.speedtest_upload
-            name: Upload
-          - entity: sensor.speedtest_ping
-            name: Ping
-          - entity: sensor.time__date
-            name: Time & Date
           - entity: sensor.cpu_temp
             name: CPU Temp
           - entity: sensor.processor_use
@@ -194,125 +389,202 @@ views:
             name: Disk Use
           - entity: sensor.last_boot
             name: Last Boot
-      - type: entities
-        title: Smart Switch
-        show_header_toggle: true
-        entities:
-          - light.kitchen_light
-          - light.dining_room_sconces
-          - light.dining_room_chandelier
-          - light.basement_light
-          - light.basement_stairs_spot_lights
-          - light.dads_bedroom
-          - light.master_bedroom
-          - light.living_room_main_lights
-          - light.living_room_spot_lights
-          - light.mataji_room
-          - light.stairs_main_lights
-          - light.upstairs_hallway_main_lights
-          - light.front_porch_sconces
-          - light.laundry_room_main_lights
-          - light.foyer_chandelier
-      - type: entities
-        title: Backyard Lights
-        show_header_toggle: true
-        entities:
-          - switch.switch_1
-          - switch.switch_2
 
-      - type: entities
-        title: Holiday Light
-        show_header_toggle: true
-        entities:
-          - light.holiday_lights
+      - type: vertical-stack
+        cards:
+          - type: entities
+            title: Switches
+            show_header_toggle: false
+            entities:
+              - entity: light.basement_light
+                name: Basement
+                type: custom:slider-entity-row
+                hide_when_off: true
+              - entity: light.basement_stairs_spot_lights
+                name: Basement Stairs
+                type: custom:slider-entity-row
+                hide_when_off: true
+              - entity: light.kitchen_light
+                name: Kitchen
+                type: custom:slider-entity-row
+                hide_when_off: true
+              - entity: light.dining_room_sconces
+                name: Dining Sconces
+                type: custom:slider-entity-row
+                hide_when_off: true
+              - entity: light.dining_room_chandelier
+                name: Dining Chandelier
+                type: custom:slider-entity-row
+                hide_when_off: true
+              - entity: light.living_room_main_lights
+                name: Living Room
+                type: custom:slider-entity-row
+                hide_when_off: true
+              - entity: light.living_room_spot_lights
+                name: Living Room Spot
+                type: custom:slider-entity-row
+                hide_when_off: true
+              - entity: light.front_porch_sconces
+                name: Porch Sconces
+                type: custom:slider-entity-row
+                hide_when_off: true
+              - entity: light.foyer_chandelier
+                name: Foyer Chandelier
+                type: custom:slider-entity-row
+                hide_when_off: true
+              - entity: light.laundry_room_main_lights
+                name: Laundry Room
+                type: custom:slider-entity-row
+                hide_when_off: true
+              - entity: light.stairs_main_lights
+                name: Stairs Sconces
+                type: custom:slider-entity-row
+                hide_when_off: true
+              - entity: light.upstairs_hallway_main_lights
+                name: Upstairs Hallway
+                type: custom:slider-entity-row
+                hide_when_off: true
+              - entity: light.mataji_room
+                name: Mataji Room
+                type: custom:slider-entity-row
+                hide_when_off: true
+              - entity: light.dads_bedroom
+                name: Dads Bedroom
+                type: custom:slider-entity-row
+                hide_when_off: true
+              - entity: light.master_bedroom
+                name: Master Bedroom
+                type: custom:slider-entity-row
+                hide_when_off: true
+          - type: entities
+            title: Backyard Lights
+            show_header_toggle: false
+            entities:
+              - switch.switch_1
+              - switch.switch_2
 
-      - type: glance
-        title: Smart Hubs
-        show_header_toggle: true
-        entities:
-          - sensor.system_hassio
-          - sensor.system_24fd5b026ee7
-          - sensor.system_lutron_hub
-          - sensor.system_honeywelldas
-          - sensor.system_irrigation1627
-          - sensor.system_adtsecurity0
-          - sensor.system_raspberrypi
-          - sensor.system_esp_81166c
-          - sensor.system_ecobee
-      - type: glance
-        title: Computers
-        show_header_toggle: true
-        entities:
-          - sensor.system_6cbfb5002686
-          - sensor.system_vaibhavsmbp
-          - sensor.system_desktopnhsa5ju
-          - sensor.system_laptopdad
-          - sensor.system_terrobladezoptiplex3010
-          - sensor.system_canon_printer
-      - type: glance
-        title: Speakers
-        show_header_toggle: true
-        entities:
-          - sensor.system_b01f81350919
-          - sensor.system_googlemini_1
-          - sensor.system_googlemini_2
-          - sensor.system_googlemini_3
-          - sensor.system_googlemini_4
-          - sensor.system_googlehomemini
-      - type: glance
-        title: Cellphones
-        show_header_toggle: true
-        entities:
-          - sensor.system_dads_s8
-          - sensor.system_moms_cellphone
-          - sensor.system_terrobladezn8
-          - sensor.system_bladedancerzz_n8
-          - sensor.system_android28ed3fd8b3166ee4
-          - sensor.system_gearfit2e61b
-      - type: glance
-        title: Camera
-        show_header_toggle: true
-        entities:
-          - sensor.system_a4da2229e234
-          - sensor.system_wyzecamv2_maindoor
-          - sensor.system_a4da2229e0c2
-      - type: glance
-        title: Motion Sensor
-        show_header_toggle: true
-        entities:
-          - sensor.system_fyre3b111f
-          - sensor.system_fyrea9c69f
-          - sensor.system_fyre3bf958
-          - sensor.system_fyre3f7822
-      - type: glance
-        title: Tvs
-        show_header_toggle: true
-        entities:
-          - sensor.system_rokulivingroom
-          - sensor.system_chromecast_livingroom
-          - sensor.system_basement_tv
+      - type: vertical-stack
+        cards:
+          - type: entities
+            title: Trash Schedule
+            show_header_toggle: true
+            entities:
+              - sensor.trash_day
+              - sensor.trash_pickup_day
+              - input_select.trash_pickup_day
+          - type: entities
+            title: Recycle Schedule
+            show_header_toggle: true
+            entities:
+              - sensor.recycle_day
+              - sensor.recycle_pickup_day
+              - sensor.recycle_pickup_week
+              - input_select.recycle_pickup_day
+              - sensor.current_week
+              - input_select.recycle_pickup_week
 
-      - type: media-control
-        entity: media_player.entry_kiosk
-      - type: media-control
-        entity: media_player.master_bedroom
-      - type: media-control
-        entity: media_player.xbr65x810c
-      - type: media-control
-        entity: media_player.mataji_room_speaker
-      - type: media-control
-        entity: media_player.mataji__dad_group
-      - type: media-control
-        entity: media_player.basement_office_speaker
-      - type: media-control
-        entity: media_player.havan_group
-      - type: media-control
-        entity: media_player.home_group
-      - type: media-control
-        entity: media_player.basement_speaker
-      - type: media-control
-        entity: media_player.dads_room_speaker
-      - type: media-control
-        entity: media_player.living_room_tv
-      - type: media-control
-        entity: media_player.living_room
+      - type: vertical-stack
+        cards:
+          - type: glance
+            title: Smart Hubs
+            show_header_toggle: true
+            entities:
+              - sensor.system_hassio
+              - sensor.system_24fd5b026ee7
+              - sensor.system_lutron_hub
+              - sensor.system_honeywelldas
+              - sensor.system_irrigation1627
+              - sensor.system_adtsecurity0
+              - sensor.system_raspberrypi
+              - sensor.system_esp_81166c
+              - sensor.system_ecobee
+          - type: glance
+            title: Computers
+            show_header_toggle: true
+            entities:
+              - sensor.system_6cbfb5002686
+              - sensor.system_vaibhavsmbp
+              - sensor.system_desktopnhsa5ju
+              - sensor.system_laptopdad
+              - sensor.system_terrobladezoptiplex3010
+              - sensor.system_canon_printer
+          - type: glance
+            title: Speakers
+            show_header_toggle: true
+            entities:
+              - sensor.system_b01f81350919
+              - sensor.system_googlemini_1
+              - sensor.system_googlemini_2
+              - sensor.system_googlemini_3
+              - sensor.system_googlemini_4
+              - sensor.system_googlehomemini
+          - type: glance
+            title: Cellphones
+            show_header_toggle: true
+            entities:
+              - sensor.system_dads_s8
+              - sensor.system_moms_cellphone
+              - sensor.system_terrobladezn8
+              - sensor.system_bladedancerzz_n8
+              - sensor.system_android28ed3fd8b3166ee4
+              - sensor.system_gearfit2e61b
+
+          - type: glance
+            title: Camera
+            show_header_toggle: true
+            entities:
+              - sensor.system_a4da2229e234
+              - sensor.system_wyzecamv2_maindoor
+              - sensor.system_a4da2229e0c2
+          - type: glance
+            title: Motion Sensor
+            show_header_toggle: true
+            entities:
+              - sensor.system_fyre3b111f
+              - sensor.system_fyrea9c69f
+              - sensor.system_fyre3bf958
+              - sensor.system_fyre3f7822
+          - type: glance
+            title: Tvs
+            show_header_toggle: true
+            entities:
+              - sensor.system_rokulivingroom
+              - sensor.system_chromecast_livingroom
+              - sensor.system_basement_tv
+
+      - type: vertical-stack
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: media-control
+                entity: media_player.entry_kiosk
+              - type: media-control
+                entity: media_player.master_bedroom
+              - type: media-control
+                entity: media_player.xbr65x810c
+          - type: horizontal-stack
+            cards:
+              - type: media-control
+                entity: media_player.mataji__dad_group
+              - type: media-control
+                entity: media_player.basement_office_speaker
+              - type: media-control
+                entity: media_player.havan_group
+
+          - type: horizontal-stack
+            cards:
+              - type: media-control
+                entity: media_player.home_group
+              - type: media-control
+                entity: media_player.basement_speaker
+              - type: media-control
+                entity: media_player.dads_room_speaker
+
+          - type: horizontal-stack
+            cards:
+              - type: media-control
+                entity: media_player.living_room_tv
+              - type: media-control
+                entity: media_player.living_room
+              - type: media-control
+                entity: media_player.entry_kiosk
