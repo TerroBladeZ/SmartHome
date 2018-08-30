@@ -87,7 +87,7 @@ homeassistant:
 sensor:
   - platform: template
     sensors:
-        system_ecobee:tates
+        system_ecobee:
           friendly_name: 'Ecobee'
           value_template: "{{ 'Online' if is_state('device_tracker.ecobee', 'home') else 'Offline' }}"
         system_vaibhavsmbp:
@@ -182,7 +182,7 @@ sensor:
           friendly_name: 'TerroBladeZ-N8'
           value_template: "{{ 'Online' if is_state('device_tracker.terrobladezn8', 'home') else 'Offline' }}"
         system_moms_cellphone:
-          friendly_name: 'Moms CellPhone'tates
+          friendly_name: 'Moms CellPhone'
           value_template: "{{ 'Online' if is_state('device_tracker.moms_cellphone', 'home') else 'Offline' }}"
         system_bladedancerzz_n86:
           friendly_name: 'BladeDancerzz N8'
