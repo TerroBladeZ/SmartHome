@@ -35,14 +35,13 @@ input_select:
   media_player:
     name: Speakers
     options: # update entity_ids for your media players
-     - "living_room_speaker" # dads rooms
+     - "living_room_speaker"
      - "basement_office_speaker"
-     - "master_bedroom"
      - "basement_speaker"
-     - "polk_assist"
-     - "mataji_room_speaker"
+     - "master_bedroom"
+     - "dads_bedroom_speaker"
+     - "mataji_room_speaker1"
      - "home_group" #everywhere
-     - "havan_group"
      - "mataji__dad_group"
     icon: mdi:speaker-wireless
   radio_station:
@@ -84,17 +83,15 @@ group:
       - input_select.google_music
 
   cca:
-    - media_player.livingroom
     - media_player.living_room_speaker
     - media_player.basement_office_speaker
-    - media_player.master_bedroom
     - media_player.basement_speaker
-    - media_player.polk_assist
+    - media_player.dads_bedroom_speaker
+    - media_player.master_bedroom
     - media_player.mataji_room_speaker
     - media_player.home_group
-    - media_player.havan_group
     - media_player.mataji__dad_group
-#    - media_player.entry_kiosk
+    - media_player.entry_kiosk
 
 
 input_boolean:
