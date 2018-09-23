@@ -7,6 +7,8 @@ resources:
     type: js
   - url: /local/lovelace_ui/mini-media-player/mini-media-player.js
     type: js
+  - url: /local/lovelace_ui/irrigation-card/irrigation-card.js
+    type: js
   - url: /local/lovelace_ui/vertical-stack-in-card/vertical-stack-in-card.js?v=0.0.6
     type: js
   - url: /local/lovelace_ui/slider-entity-row/slider-entity-row.js
@@ -148,6 +150,70 @@ views:
     #    entity_weather: weather.yweather
     #    entity_sun: sun.sun
 
+      - type: custom:irrigation-card
+        title: Irrigation System
+        next_water: sensor.cycle1_next_run_time
+        last_water: sensor.last_irrigated_time
+        zone_status: group.irrigation_valves
+        moisture_level: sensor.thermostat_humidity
+        temperature: sensor.thermostat_humidity
+        light_level: sensor.thermostat_humidity
+
+        #  - sensor.cycle1_running
+        #  - sensor.cycle1_zone_being_watered
+        #  - timer.cycle1_zone_duration
+        #  - sensor.last_irrigated_time
+        #  - input_boolean.cycle1_enable
+        #  - sensor.cycle1_next_run_time
+        #  - input_boolean.cycle1_manual_run
+        #  - input_select.cycle1_schedule_time
+        #  - input_select.cycle1_watering_days
+        #  - input_number.cycle1_zone1_duration
+        #  - input_number.cycle1_zone2_duration
+        #  - input_number.cycle1_zone3_duration
+        #  - input_number.cycle1_zone4_duration
+        #  - input_number.cycle1_zone5_duration
+#Mini Media Player
+      - type: entities
+        title: Media
+        entities:
+        - entity: media_player.entry_kiosk
+          type: "custom:mini-media-player"
+          group: true
+        - entity: media_player.living_room_speaker
+          type: "custom:mini-media-player"
+          group: true
+        - entity: media_player.master_bedroom
+          type: "custom:mini-media-player"
+          group: true
+        - entity: media_player.mataji__dad_group
+          type: "custom:mini-media-player"
+          group: true
+        - entity: media_player.basement_office_speaker
+          type: "custom:mini-media-player"
+          group: true
+        - entity: media_player.basement_speaker
+          type: "custom:mini-media-player"
+          group: true
+        - entity: media_player.dads_room_speaker
+          type: "custom:mini-media-player"
+          group: true
+        - entity: media_player.havan_group
+          type: "custom:mini-media-player"
+          group: true
+        - entity: media_player.home_group
+          type: "custom:mini-media-player"
+          group: true
+        - entity: media_player.living_room
+          type: "custom:mini-media-player"
+          group: true
+        - entity: media_player.living_room_tv
+          type: "custom:mini-media-player"
+          group: true
+        - entity: media_player.xbr65x810c
+          type: "custom:mini-media-player"
+          group: true
+#system_adtsecurity0
       - type: glance
         title: Security
         show_header_toggle: true
@@ -163,6 +229,7 @@ views:
           - light.holiday_lights
           - input_select.holiday_led_effect
 
+#Irrigation
       - type: entities
         title: Morning Cycle
         show_header_toggle: false
@@ -390,6 +457,15 @@ views:
             name: Disk Use
           - entity: sensor.last_boot
             name: Last Boot
+          - entity: sensor.pihole_dns_queries_today
+            name: Quries Today
+          - entity: sensor.pihole_domains_blocked
+            name: Domains Blocked
+          - entity: sensor.pihole_ads_percentage_blocked_today
+            name: Blocked Today
+          - entity: sensor.pihole_dns_unique_domains
+            name: Unique Domains
+
 
       - type: vertical-stack
         cards:
@@ -552,45 +628,3 @@ views:
               - sensor.system_rokulivingroom
               - sensor.system_chromecast_livingroom
               - sensor.system_basement_tv
-
-
-          - type: entities
-            title: Media
-            entities:
-            - entity: media_player.entry_kiosk
-              type: "custom:mini-media-player"
-              group: true
-            - entity: media_player.living_room_speaker
-              type: "custom:mini-media-player"
-              group: true
-            - entity: media_player.master_bedroom
-              type: "custom:mini-media-player"
-              group: true
-            - entity: media_player.mataji__dad_group
-              type: "custom:mini-media-player"
-              group: true
-            - entity: media_player.basement_office_speaker
-              type: "custom:mini-media-player"
-              group: true
-            - entity: media_player.basement_speaker
-              type: "custom:mini-media-player"
-              group: true
-            - entity: media_player.dads_room_speaker
-              type: "custom:mini-media-player"
-              group: true
-
-            - entity: media_player.havan_group
-              type: "custom:mini-media-player"
-              group: true
-            - entity: media_player.home_group
-              type: "custom:mini-media-player"
-              group: true
-            - entity: media_player.living_room
-              type: "custom:mini-media-player"
-              group: true
-            - entity: media_player.living_room_tv
-              type: "custom:mini-media-player"
-              group: true
-            - entity: media_player.xbr65x810c
-              type: "custom:mini-media-player"
-              group: true
