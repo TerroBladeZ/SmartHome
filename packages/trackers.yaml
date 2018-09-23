@@ -1,14 +1,14 @@
 # https://github.com/cy1701/Home-Assistant-Configuration
-device_tracker:
+#device_tracker:
 
-  - platform: asuswrt
-    host: !secret netgear_ip
-    protocol: ssh
+#  - platform: asuswrt
+#    host: !secret netgear_ip
+#    protocol: ssh
     #port: 22
-    mode: router
-    username: !secret netgear_user
-    password: !secret netgear_pw
-    consider_home: 80
+#    mode: router
+#    username: !secret netgear_user
+#    password: !secret netgear_pw
+#    consider_home: 80
     #track_new_devices: no
     #interval_seconds: 1200
 #bmw_connected_drive:
