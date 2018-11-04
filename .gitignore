@@ -2,6 +2,7 @@
 logs
 *.log
 secrets\.yaml
+esphomeyaml\.yaml
 *.pid
 *.xml
 *.csr
