@@ -7,6 +7,7 @@ I regularly update my configuration files. If you like anything here, Be sure to
 
 1. sudo apt-get install curl
 2. curl -sL goo.gl/goR2HT | bash -
+3. sudo chmod -R 777 /usr/share/hassio
 
 
 ## Devices
