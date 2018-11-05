@@ -429,7 +429,7 @@ sensor:
         friendly_name: Zone 1 total watering time today
         value_template: >
           {% set duration = states('sensor.zone1_time') %}
-          {{ (float(duration) * 60) | round }}
+          {{ (duration | float * 60) | round }}
         unit_of_measurement: minutes
         icon_template: mdi:water
 
@@ -437,7 +437,7 @@ sensor:
         friendly_name: Zone 2 total watering time today
         value_template: >
           {% set duration = states('sensor.zone2_time') %}
-          {{ (float(duration) * 60) | round }}
+          {{ (duration | float * 60) | round }}
         unit_of_measurement: minutes
         icon_template: mdi:water
 
@@ -445,7 +445,7 @@ sensor:
         friendly_name: Zone 3 total watering time today
         value_template: >
           {% set duration = states('sensor.zone3_time') %}
-          {{ (float(duration) * 60) | round }}
+          {{ (duration | float * 60) | round }}
         unit_of_measurement: minutes
         icon_template: mdi:water
 
@@ -453,7 +453,7 @@ sensor:
         friendly_name: Zone 4 total watering time today
         value_template: >
           {% set duration = states('sensor.zone4_time') %}
-          {{ (float(duration) * 60) | round }}
+          {{ (duration | float * 60) | round }}
         unit_of_measurement: minutes
         icon_template: mdi:water
 
@@ -461,7 +461,7 @@ sensor:
         friendly_name: Zone 5 total watering time today
         value_template: >
           {% set duration = states('sensor.zone5_time') %}
-          {{ (float(duration) * 60) | round }}
+          {{ (duration | float * 60) | round }}
         unit_of_measurement: minutes
         icon_template: mdi:water
 
